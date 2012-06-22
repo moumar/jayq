@@ -163,6 +163,12 @@
 (defn inner [$elem v]
   (.html $elem v))
 
+(defn filter [$elem v]
+  (.filter $elem v))
+
+(defn is [$elem v]
+  (.is $elem v))
+
 (defn empty [$elem]
   (.empty $elem))
 
