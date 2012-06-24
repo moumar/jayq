@@ -1,5 +1,5 @@
 (ns jayq.core
-  (:refer-clojure :exclude [val empty remove find filter])
+  (:refer-clojure :exclude [val empty remove find filter not])
   (:require [clojure.string :as string])
   (:use [jayq.util :only [clj->js]]))
 
@@ -77,6 +77,12 @@
   (if (keyword? opts)
     (.css $elem (name opts))
     (.css $elem (clj->js opts))))
+
+(defn width
+  ([$elem]
+   (.width $elem))
+  ([$elem txt]
+    (.width $elem txt)))
 
 (defn attr [$elem a & [v]]
   (let [a (name a)]
@@ -171,6 +177,9 @@
 
 (defn is [$elem v]
   (.is $elem v))
+
+(defn not [$elem v]
+  (.not $elem v))
 
 (defn empty [$elem]
   (.empty $elem))
