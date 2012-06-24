@@ -36,10 +36,10 @@
   IIndexed
   (-nth [this n]
     (when (< n (count this))
-      (.slice this n (inc n))))
+      (.get this n )))
   (-nth [this n not-found]
     (if (< n (count this))
-      (.slice this n (inc n))
+      (.get this n )
       (if (undefined? not-found)
         nil
         not-found)))
