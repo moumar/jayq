@@ -1,5 +1,5 @@
 (ns jayq.core
-  (:refer-clojure :exclude [val empty remove find])
+  (:refer-clojure :exclude [val empty remove find filter])
   (:require [clojure.string :as string])
   (:use [jayq.util :only [clj->js]]))
 
@@ -87,11 +87,14 @@
 (defn remove-attr [$elem a]
   (.removeAttr $elem (name a)))
 
-(defn data [$elem k & [v]]
-  (let [k (name k)]
-    (if-not v
-      (. $elem (data k))
-      (. $elem (data k v)))))
+(defn data 
+  ([$elem]
+   (js->clj (.data $elem) :keywordize-keys true))
+  ([$elem k & [v]]
+    (let [k (name k)]
+      (if-not v
+        (. $elem (data k))
+        (. $elem (data k v))))))
 
 (defn position [$elem]
   (js->clj (.position $elem) :keywordize-keys true))
