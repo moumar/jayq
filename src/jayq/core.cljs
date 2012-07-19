@@ -235,6 +235,7 @@
 
 (defn ->event [e]
   (cond
+    (string? e) e
     (keyword? e) (name e)
     (map? e) (clj->js e)
     (coll? e) (string/join " " (map name e))
