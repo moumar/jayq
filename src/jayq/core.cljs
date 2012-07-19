@@ -105,6 +105,10 @@
 (defn position [$elem]
   (js->clj (.position $elem) :keywordize-keys true))
 
+(defn offset 
+  ( [$elem] (js->clj (.offset $elem) :keywordize-keys true))
+  ( [$elem arg] (js->clj (.offset $elem arg) :keywordize-keys true)))
+
 (defn add-class [$elem cl]
   (let [cl (name cl)]
     (.addClass $elem cl)))
