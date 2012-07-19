@@ -140,6 +140,9 @@
 (defn remove [$elem]
   (.remove $elem))
 
+(defn detach [$elem]
+  (.detach $elem))
+
 (defn hide [$elem & [speed on-finish]]
   (.hide $elem speed on-finish))
 
