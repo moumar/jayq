@@ -1,5 +1,5 @@
 (ns jayq.core
-  (:refer-clojure :exclude [val empty remove find filter not])
+  (:refer-clojure :exclude [val empty remove find filter not parents])
   (:require [clojure.string :as string])
   (:use [jayq.util :only [clj->js]]))
 
@@ -166,6 +166,10 @@
 
 (defn find [$elem selector]
   (.find $elem (name selector)))
+
+(defn parents 
+  ([$elem] (.parents $elem))
+  ([$elem selector] (.parents $elem selector)))
 
 (defn closest [$elem selector & [context]]
   (.closest $elem selector context))
